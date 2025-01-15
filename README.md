@@ -15,14 +15,12 @@ Retro Agent SDKは、以下の主要な機能を提供します：
 
 これらの機能により、開発者はより迅速かつ効率的にゲームを作成できます。
 
-
-## 利用しているゲームエンジン
+# 利用しているゲームエンジン
 
 Retro Agent SDKは、ゲーム開発に特化した強力なツールキットです。
 このSDKは、BabylonJSやPhaserなどの現代的なゲームエンジンと組み合わせて使用することで、ゲームを効率的に開発できます。BabylonJSとの組み合わせでは、BabylonJSの3D環境に統合することで、レトロな2Dグラフィックスと現代的な3D要素を融合させた独特な視覚体験を創出できます。Retro Agent SDKは、これらのゲームエンジンと互換性のあるAPIを提供し、開発者はシームレスに統合できます。
 
-
-## 詳細説明
+# 詳細説明
 
 ### 1.自動マップ生成
 
@@ -51,7 +49,6 @@ const generatedMap = await agent.generateMap(mapPrompt);
 
 console.log(generatedMap);
 ```
-
 ![マップ生成](./map_create.gif) 
 
 ### 2.AIドリブンNPC制御
@@ -196,3 +193,8 @@ NPCたちが自分たちの日常生活を送り、互いにコミュニケー�
 [40] [PDF] The Effect of Context-aware LLM-based NPC Conversations on ... https://projekter.aau.dk/projekter/files/536738243/The_Effect_of_Context_aware_LLM_based_NPC_Dialogues_on_Player_Engagement_in_Role_playing_Video_Games.pdf
 [41] NVIDIA Redefines Game AI With ACE Autonomous Game Characters https://www.nvidia.com/en-us/geforce/news/nvidia-ace-autonomous-ai-companions-pubg-naraka-bladepoint/
 
+# プレゼン資料化コマンド
+
+$ npm install -g reveal-md
+$ reveal-md ./pre.md -w
+$ reveal-md ./pre.md --static ./
