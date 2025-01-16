@@ -61,15 +61,36 @@ NPCの行動をプロンプトで簡単に定義できます。パックマン�
 
 Retro Agentの最大の特徴は、自然言語プロンプトを使用してNPCの複雑な行動パターンを定義できることです。
 
-**例: パックマン風の敵AI**
 ```typescript
-const ghostBehavior = retroAgent.createNPC(`
-  敵のAIは、通常モードと警戒モードの2種類を使い分けます。
-  通常は陣地の中を右回りに監視警戒を行ってください。視野は3マスあり、プレイヤーが視野に入った場合に警戒モードに切りわります。警戒モードの場合はプレイヤーを追跡してください。30秒以内にプレイヤーを見失った場合、通常モードに戻ります。
-`);
+
+import { RetroAgent } from 'retro-agent-sdk';
+
+const agent = new RetroAgent();
+
+const behaviorPrompt = `
+  視野の番号と行いたい行動についてはこちらになります。
+  0:何もない
+  1:猪  プレイヤーと重なると飢えを回復することができるので、追いかけてください
+  2:熊  プレイヤーと重なるとプレイヤーは死亡します。逃げてください。
+  3:木  木材となります。木材を使って家をつくれるので、追いかけてください。
+  9:自分の位置
+`;
+
+const npc = await agent.createNPC(mapPrompt);
+
+//tickの中で呼び出し
+let d = npc.getDirection(      
+  [        
+    0,0,0,0,0,
+    0,0,0,0,0,
+    0,0,0,0,2,
+    0,0,0,0,0,
+    0,0,0,0,0
+);
+
 ```
 
-![NPC歩行](./npc_walk.gif) 
+![NPC歩行](./map_create.gif) 
 
 ### 3.ダイナミックアイテム管理システム
 
@@ -195,6 +216,10 @@ NPCたちが自分たちの日常生活を送り、互いにコミュニケー�
 
 # プレゼン資料化コマンド
 
+//インストール
 $ npm install -g reveal-md
+//プレビュー
 $ reveal-md ./pre.md -w
+//html化
+$ reveal-md ./pre.md
 $ reveal-md ./pre.md --static ./

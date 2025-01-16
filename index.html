@@ -20,6 +20,12 @@
             
 # Retro Agent SDK
 
+---
+
+# AIAgent x Game
+
+KRAFTON「CES 2025」にてNVIDIAと共にAIイノベーション技術「Co-Playable Character」が発表。
+「CPC」は人間のようにゲームの状況を認識し、ゲームプレイヤーと会話をして協力する能力を実現。
 
 ---
 
@@ -31,8 +37,6 @@ Babylon.jsやPhaserなどの既存のゲームエンジンと組み合わせて�
 ---
 
 # 特徴
-
-Retro Agent SDKは、以下の主要な機能を提供します：
 
 1. 自動マップ生成
 2. 高度なNPC AI制御
@@ -71,6 +75,7 @@ const generatedMap = await agent.generateMap(mapPrompt);
 
 console.log(generatedMap);
 ```
+
 ---
 
 ![マップ生成](./map_create.gif) 
@@ -88,15 +93,37 @@ Retro Agentの最大の特徴は、自然言語プロンプトを使用してNPC
 ---
 
 ```typescript
-const ghostBehavior = retroAgent.createNPC(`
-  敵のAIは、通常モードと警戒モードの2種類を使い分けます。
-  通常は陣地の中を右回りに監視警戒を行ってください。視野は3マスあり、プレイヤーが視野に入った場合に警戒モードに切りわります。警戒モードの場合はプレイヤーを追跡してください。30秒以内にプレイヤーを見失った場合、通常モードに戻ります。
-`);
+
+import { RetroAgent } from 'retro-agent-sdk';
+
+const agent = new RetroAgent();
+
+const behaviorPrompt = `
+  視野の番号と行いたい行動についてはこちらになります。
+  0:何もない
+  1:猪  プレイヤーと重なると飢えを回復することができるので、追いかけてください
+  2:熊  プレイヤーと重なるとプレイヤーは死亡します。逃げてください。
+  3:木  木材となります。木材を使って家をつくれるので、追いかけてください。
+  9:自分の位置
+`;
+
+const npc = await agent.createNPC(mapPrompt);
+
+//tickの中で呼び出し
+let d = npc.getDirection(      
+  [        
+    0,0,0,0,0,
+    0,0,0,0,0,
+    0,0,0,0,2,
+    0,0,0,0,0,
+    0,0,0,0,0
+);
+
 ```
 
 ---
 
-![NPC歩行](./npc_walk.gif) 
+![NPC歩行](./map_create.gif) 
 
 ---
 
