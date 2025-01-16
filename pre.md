@@ -59,7 +59,7 @@ console.log(generatedMap);
 
 ---
 
-![マップ生成](./map_create.gif) 
+![マップ生成](./map_create1.gif) 
 
 ---
 
@@ -104,7 +104,7 @@ let d = npc.getDirection(
 
 ---
 
-![NPC歩行](./map_create.gif) 
+![NPC歩行](./map_create1.gif) 
 
 ---
 
