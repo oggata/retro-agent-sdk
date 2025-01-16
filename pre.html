@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>reveal-md</title>
+    <title>Retro Agent SDK</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/reveal.css" />
-    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./dist/theme/night.css" id="theme" />
     <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
 
   </head>
@@ -18,25 +18,26 @@
         <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
           <textarea data-template>
             
+
 # Retro Agent SDK
 
 ---
 
-# AIAgent x Game
+### AIAgent x Game
 
 KRAFTON「CES 2025」にてNVIDIAと共にAIイノベーション技術「Co-Playable Character」が発表。
 「CPC」は人間のようにゲームの状況を認識し、ゲームプレイヤーと会話をして協力する能力を実現。
 
 ---
 
-# Retro Agent SDK
+### Retro Agent SDK
 
 Retro Agent は、レトロゲーム開発のためのTypeScriptベースのSDKです。
 Babylon.jsやPhaserなどの既存のゲームエンジンと組み合わせて使用することができ、革新的な機能を提供します。
 
 ---
 
-# 特徴
+### 特徴
 
 1. 自動マップ生成
 2. 高度なNPC AI制御
@@ -48,7 +49,7 @@ Babylon.jsやPhaserなどの既存のゲームエンジンと組み合わせて�
 
 ---
 
-# 1.自動マップ生成
+### 1.自動マップ生成
 
 - **プロンプトベースの生成**: 簡単な説明文でマップを生成
 - **カスタマイズ可能**: サイズ、オブジェクトタイプ、シーン設定などを指定可能
@@ -82,7 +83,7 @@ console.log(generatedMap);
 
 ---
 
-# 2.AIドリブンNPC制御
+### 2.AIドリブンNPC制御
 
 - **柔軟な行動パターン**: 複雑なAIロジックをシンプルな文章で表現
 - **状況に応じた行動変化**: 視野、警戒状態、追跡ロジックなどを簡単に設定
@@ -127,7 +128,7 @@ let d = npc.getDirection(
 
 ---
 
-# 3.ダイナミックアイテム管理システム
+### 3.ダイナミックアイテム管理システム
 
 - **リアルな効果生成**: 食べ物、武器、防具などの効果を自動計算
 - **アイテム組み合わせ**: 複数のアイテムを組み合わせて新しいアイテムを作成
@@ -162,7 +163,7 @@ console.log(player.status); // 出力: { health: 100, hunger: 92 } (空腹度が
 
 ---
 
-# ユースケース
+### ユースケース
 
 1. **ローグライクゲーム**: 毎回異なるダンジョンを自動生成
 2. **ステルスゲーム**: 複雑なAI行動パターンを持つ敵を簡単に作成
@@ -170,7 +171,7 @@ console.log(player.status); // 出力: { health: 100, hunger: 92 } (空腹度が
 
 ---
 
-# インストール方法
+### インストール方法
 
 ```javascript
 npm create vite@latest
@@ -183,9 +184,11 @@ npm run dev
 
 ---
 
-# まとめ
+### まとめ
 
-これらの要素により、ゲームはより動的で予測不可能なものとなり、プレイヤーの好奇心を刺激し続けることができます。同時に、NPCたちとの深い感情的な繋がりを通じて、より豊かなストーリー体験を提供することが可能になります。AI Agentによる自律的なNPCの導入は、ゲームの再現性を高め、プレイヤーにとってより魅力的で没入感のある世界を創り出す大きな可能性を秘めているのです。
+これらの要素により、ゲームはより動的で予測不可能なものとなり、プレイヤーの好奇心を刺激し続けることができます。
+同時に、NPCたちとの深い感情的な繋がりを通じて、より豊かなストーリー体験を提供することが可能になります。
+AI Agentによる自律的なNPCの導入は、プレイヤーにとってより魅力的で没入感のある世界を創り出す大きな可能性を秘めています。
 
           </textarea>
         </section>
