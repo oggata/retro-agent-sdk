@@ -1,3 +1,7 @@
+# Slide URL
+
+https://oggata.github.io/retro-agent-sdk/
+
 # Retro Agent SDK
 
 Retro Agent は、レトロゲーム開発のためのTypeScriptベースのSDKです。
