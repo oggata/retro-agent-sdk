@@ -20,6 +20,7 @@ KRAFTON「CES 2025」にてNVIDIAと共にAIイノベーション技術「Co-Pla
 
 Retro Agent は、レトロゲーム開発のためのTypeScriptベースのSDKです。
 Babylon.jsやPhaserなどの既存のゲームエンジンと組み合わせて使用することができ、革新的な機能を提供します。
+WasmでのWeb-LLMを使うことでローカル実行を行うことで手軽にAIの活用が可能です。
 
 ---
 
@@ -74,7 +75,7 @@ console.log(generatedMap);
 
 ---
 
-<img src="./map_create2.gif" width="100%">
+<img src="./map_create3.gif" width="100%">
 
 ---
 
@@ -138,7 +139,7 @@ let d = npc.getDirection(
 
 ---
 
-<img src="./npc_walk2.gif" width="100%">
+<img src="./npc_walk3.gif" width="100%">
 
 ---
 
