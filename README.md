@@ -132,6 +132,76 @@ console.log(player.status); // 出力: { health: 100, hunger: 92 } (空腹度が
 この例では、生肉を調理して焼肉を作成し、それをプレイヤーに使用する過程を示しています。RetroAgentが自動的にアイテムの効果を計算し、プレイヤーのステータスに反映します。
 
 
+### 4.ミッション管理、NPC連携システム
+
+AIを活用してミッション管理を効率化します。主な機能は、ミッションの自動生成、進捗管理、NPCの会話生成です。例えば、最終目標「魔王を倒す」を指定すると、「村で祠の噂を聞く」「祠から伝説の金属を集める」「剣を購入する」といったサブミッションを自動で作成。ミッションには前提条件があり、進捗をフラグで管理するため、順序を間違えると先に進めません。プレイヤーが「祠の噂を聞いた」フラグを立てると、次のミッションが解放される仕組みです。また、NPCの会話は進捗に応じて変化し、例えば金属入手前なら「祠に行ってみなよ」、入手後なら「道具屋に持って行け」と助言。これにより、開発者は手動でシナリオを書かずとも、自然で一貫性のあるゲーム体験を簡単に実現できます。APIは直感的で、generateMissionsでミッション生成、updateProgressで進捗更新、generateNpcDialogueで会話生成を呼び出せます。柔軟性と拡張性も備え、レトロゲーム開発を強力に支援します。
+
+
+```
+import { MissionManager } from 'retro-agent-sdk';
+
+// ミッション管理インスタンスを作成
+const missionManager = new MissionManager({
+  autoGenerateSubmissions: true,
+  language: 'ja',
+});
+
+// 最終目標を指定してミッションを生成
+const missions = missionManager.generateMissions('魔王を倒す');
+console.log(missions);
+/*
+出力例:
+[
+  { id: 'm1', description: '村で祠の噂を聞く', prerequisites: [] },
+  { id: 'm2', description: '祠から伝説の金属を集める', prerequisites: ['m1'] },
+  { id: 'm3', description: '伝説の金属を村の道具屋に渡す', prerequisites: ['m2'] },
+  { id: 'm4', description: '街の店を訪れる', prerequisites: ['m3'] },
+  { id: 'm5', description: '剣を購入する', prerequisites: ['m4'] },
+  { id: 'm6', description: '魔王を倒す', prerequisites: ['m5'], isFinalGoal: true }
+]
+*/
+
+// ミッションの進捗を更新
+missionManager.updateProgress('m1', true); // "村で祠の噂を聞く" を完了
+console.log(missionManager.getProgress());
+/*
+出力例:
+{
+  completedMissions: ['m1'],
+  activeMissions: [
+    { id: 'm2', description: '祠から伝説の金属を集める', prerequisites: ['m1'] }
+  ]
+}
+*/
+
+// NPC の会話を生成（村人）
+const villagerDialogue = missionManager.generateNpcDialogue('npc_villager_1', { location: '村' });
+console.log(villagerDialogue);
+// 出力例: "祠に行けば何か見つかるかもしれないよ"
+
+// さらに進捗を更新
+missionManager.updateProgress('m2', true); // "祠から伝説の金属を集める" を完了
+
+// NPC の会話を再生成（道具屋）
+const blacksmithDialogue = missionManager.generateNpcDialogue('npc_blacksmith', { role: '道具屋' });
+console.log(blacksmithDialogue);
+// 出力例: "その金属を渡してくれれば、特別なものを作れるよ"
+
+// ミッションの状態を確認
+const missionStatus = missionManager.getMissionStatus('m5');
+console.log(missionStatus);
+/*
+出力例:
+{
+  id: 'm5',
+  description: '剣を購入する',
+  completed: false,
+  canProgress: false // 前提条件（m4）が未完了
+}
+*/
+```
+
+
 ## ユースケース
 
 1. **ローグライクゲーム**: 毎回異なるダンジョンを自動生成
